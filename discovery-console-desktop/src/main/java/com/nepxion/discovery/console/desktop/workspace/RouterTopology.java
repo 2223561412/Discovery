@@ -1,16 +1,5 @@
 package com.nepxion.discovery.console.desktop.workspace;
 
-/**
- * <p>Title: Nepxion Discovery</p>
- * <p>Description: Nepxion Discovery</p>
- * <p>Copyright: Copyright (c) 2017-2050</p>
- * <p>Company: Nepxion</p>
- * @author Haojun Ren
- * @version 1.0
- */
-
-import twaver.Generator;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -29,9 +18,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JToolBar;
 
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.CollectionUtils;
 
 import com.nepxion.cots.twaver.element.TElementManager;
 import com.nepxion.cots.twaver.element.TLink;
@@ -63,6 +51,17 @@ import com.nepxion.swing.listener.DisplayAbilityListener;
 import com.nepxion.swing.locale.SwingLocale;
 import com.nepxion.swing.optionpane.JBasicOptionPane;
 import com.nepxion.swing.textfield.JBasicTextField;
+
+/**
+ * <p>Title: Nepxion Discovery</p>
+ * <p>Description: Nepxion Discovery</p>
+ * <p>Copyright: Copyright (c) 2017-2050</p>
+ * <p>Company: Nepxion</p>
+ * @author Haojun Ren
+ * @version 1.0
+ */
+
+import twaver.Generator;
 
 public class RouterTopology extends AbstractTopology {
     private static final long serialVersionUID = 1L;
@@ -179,7 +178,7 @@ public class RouterTopology extends AbstractTopology {
 
     private void route(RouterEntity routerEntity, TNode node, int index) {
         List<RouterEntity> nexts = routerEntity.getNexts();
-        if (CollectionUtils.isNotEmpty(nexts)) {
+        if (!CollectionUtils.isEmpty(nexts)) {
             for (RouterEntity next : nexts) {
                 String nodeName = getNodeName(next);
                 TNode nextNode = TElementManager.getNode(dataBox, nodeName);
@@ -206,7 +205,7 @@ public class RouterTopology extends AbstractTopology {
         }
 
         Map<String, String> customMap = routerEntity.getCustomMap();
-        if (MapUtils.isNotEmpty(customMap)) {
+        if (customMap!=null&&!customMap.isEmpty()) {
             for (Map.Entry<String, String> entry : customMap.entrySet()) {
                 stringBuilder.append("\n ").append(entry.getKey()).append("=").append(entry.getValue());
             }
