@@ -203,11 +203,19 @@
                 <version>${commons.lang3.version}</version>
             </dependency>
 
-            <dependency>
+           <!--  <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
                 <version>${commons.collections4.version}</version>
-            </dependency>
+            </dependency> -->
+            
+            
+           <dependency>
+			    <groupId>commons-collections</groupId>
+			    <artifactId>commons-collections</artifactId>
+			    <version>3.2.2</version>
+			</dependency>
+
 
             <dependency>
                 <groupId>commons-io</groupId>
@@ -367,33 +375,20 @@
                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
                 </repository>
             </distributionManagement>
+            
         </profile>
     </profiles>
 
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <url>http://192.168.112.16:8081/nexus/content/repositories/microservicesnapshots/</url>
+    </snapshotRepository>
+    <repository>
+      <id>releases</id>
+      <url>http://192.168.112.16:8081/nexus/content/repositories/microservicerelease/</url>
+    </repository>
+  </distributionManagement>
 
-    <scm>
-        <url>https://github.com/Nepxion/Discovery</url>
-        <connection>scm:git:https://github.com/Nepxion/Discovery.git</connection>
-        <developerConnection>scm:git:https://github.com/Nepxion/Discovery.git</developerConnection>
-        <tag>v${project.version}</tag>
-    </scm>
-
-    <organization>
-        <name>Nepxion</name>
-        <url>http://www.nepxion.com</url>
-    </organization>
-
-    <developers>
-        <developer>
-            <name>Haojun Ren</name>
-            <email>1394997@qq.com</email>
-            <url>http://www.nepxion.com</url>
-        </developer>
-    </developers>
+  
 </project>
